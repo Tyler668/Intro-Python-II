@@ -67,7 +67,7 @@ def validateDirection(nextRoom):
         print('Not a valid direction!\n')
 
 
-print("\nWelcome adventurer! Before you stands a mysterious cave entrance\n")
+print("\nWelcome adventurer! North of you stands a mysterious cave entrance...\n")
 
 while True:
     entry = input("Where will you go? [N], [S], [E], [W], Quit = [Q]")
@@ -81,7 +81,7 @@ while True:
         print("Thanks for playing!\n")
         break
 
-    if entry == 'N' or entry == 'n':
+    elif entry == 'N' or entry == 'n':
         clear()
         nextRoom = player1.current_room.n_to
         validateDirection(nextRoom)
