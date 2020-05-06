@@ -1,4 +1,9 @@
 from room import Room
+from player import Player
+from os import system
+
+
+clear = lambda: system('cls')
 
 # Declare all the rooms
 
@@ -39,6 +44,7 @@ room['treasure'].s_to = room['narrow']
 
 # Make a new player object that is currently in the 'outside' room.
 
+
 # Write a loop that:
 #
 # * Prints the current room name
@@ -49,3 +55,57 @@ room['treasure'].s_to = room['narrow']
 # Print an error message if the movement isn't allowed.
 #
 # If the user enters "q", quit the game.
+player1 = Player('Tyler', room['outside'])
+
+
+def validateDirection(nextRoom):
+    if nextRoom:
+        player1.current_room = nextRoom
+        print(
+            f"You advance to \n[{nextRoom.name}] \n\n{nextRoom.description}\n\n")
+    else:
+        print('Not a valid direction!\n')
+
+
+print("\nWelcome adventurer! Before you stands a mysterious cave entrance\n")
+
+while True:
+    entry = input("Where will you go? [N], [S], [E], [W], Quit = [Q]")
+    print('\n')
+
+    # print('Entry:', entry)
+    # print('Current room:', player1.current_room.name)
+
+    if entry == 'Q' or entry == 'q':
+        clear()
+        print("Thanks for playing!\n")
+        break
+
+    if entry == 'N' or entry == 'n':
+        clear()
+        nextRoom = player1.current_room.n_to
+        validateDirection(nextRoom)
+
+    elif entry == 'S' or entry == 's':
+        clear()
+        nextRoom = player1.current_room.s_to
+
+        validateDirection(nextRoom)
+
+    elif entry == 'E' or entry == 'e':
+        clear()
+        nextRoom = player1.current_room.e_to
+
+        validateDirection(nextRoom)
+
+    elif entry == 'W' or entry == 'w':
+        clear()
+        nextRoom = player1.current_room.w_to
+
+        validateDirection(nextRoom)
+
+    else:
+        clear()
+        print("Not a valid direction!")
+
+   
